@@ -60,7 +60,8 @@ jQuery(function ($) {
 		$portfolio = $('.portfolio-items');
 		$portfolio.isotope({
 			itemSelector: 'li',
-			layoutMode: 'fitRows'
+			layoutMode: 'fitRows',
+			filter: '.nova' // Establece el filtro por defecto
 		});
 		$portfolio_selectors = $('.portfolio-filter >li>a');
 		$portfolio_selectors.on('click', function () {
