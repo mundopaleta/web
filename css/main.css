@@ -71,6 +71,7 @@ a:focus {
   display: block !important;
   z-index: 1;
   text-align: center;
+  height: 300px;
 }
 #main-slider .item:first-child {
   top: auto;
