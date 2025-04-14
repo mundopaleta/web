@@ -574,12 +574,14 @@ a:focus {
   padding-top: 30px;
   padding-bottom: 30px;
   color: #000000;
+  text-align: center;
 }
 #footer a {
-  color: #999;
+  color: #000000;
+  font-size: xx-small;
 }
 #footer a:hover {
-  color: #52b6ec;
+  color: #005989;
 }
 ul.social {
   list-style: none;
