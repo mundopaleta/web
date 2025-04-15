@@ -69,7 +69,39 @@ jQuery(function ($) {
 			$(this).addClass('active');
 			var selector = $(this).attr('data-filter');
 			$portfolio.isotope({ filter: selector });
+
+			// Espera a que termine la reorganización antes de refrescar ScrollSpy
+			$portfolio.on('arrangeComplete', function () {
+				$('body').scrollspy('refresh');
+			});
+
 			return false;
 		});
 	});
+
+	$(window).on('scroll', function () {
+		var scrollPos = $(document).scrollTop();
+		var offset = 110;
+		var docHeight = $(document).height();
+		var winHeight = $(window).height();
+		var scrollBottom = scrollPos + winHeight;
+
+		var pricing = $('#pricing');
+		var contact = $('#contact');
+
+		var inPricing =
+			scrollPos + offset >= pricing.offset().top &&
+			scrollPos + offset < pricing.offset().top + pricing.outerHeight();
+
+		var atBottom = scrollBottom >= docHeight - 2; // Permite un pequeño margen
+
+		if (atBottom) {
+			$('.navbar-nav li').removeClass('active');
+			$('.navbar-nav li a[href="#contact"]').parent().addClass('active');
+		} else if (inPricing) {
+			$('.navbar-nav li').removeClass('active');
+			$('.navbar-nav li a[href="#pricing"]').parent().addClass('active');
+		}
+	});
+
 });
